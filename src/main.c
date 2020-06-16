@@ -20,6 +20,24 @@ void go()
     printf("\n [*] - Velocity                    : %lf km/s \n", velocity);
     printf("\n [*] - Rotation period             : %lf Hours \n", rotation_period);
 
+    char c;
+    while (1){
+        fflush(stdin);
+        printf("\n\nTry again (y/n)? : ");
+        if (scanf("%c", &c) == 1){
+                if (c == 'y' || c == 'Y'){
+                    printf("\n");
+                    go();
+                    return;
+                }
+                else if(c == 'n' || c == 'N'){
+                    return;
+                }else{
+                    printf("Command not found!");
+                }
+        }
+    }
+
 }
 
 
@@ -27,6 +45,4 @@ int main()
 {
     printf("\n\t***  Satellite Velocity Calculator  ***\n");
     go();
-    getch();
-	return 0;
 }
