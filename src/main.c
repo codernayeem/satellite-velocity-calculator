@@ -1,24 +1,32 @@
 #include <stdio.h>
 #include <conio.h>
+#include <math.h>
 
-main()
+void go()
 {
-    printf("\n\t***  Satellite Velocity Calculator  ***\n");
-
-    double height, v, t;
+    double height, height_meter, velocity, rotation_period;
 
     printf("\n [+] - Height(km) of the satellite from earth's surface : ");
+
     scanf("%lf", &height);
 
     // taking height to meters
-    height = height * 1000;
+    height_meter = height * 1000;
 
-    v = sqrt(9.8*(6400000+height)) / 1000;
-    printf("\nVelocity         : %lf km/s\n", v);
+    velocity = sqrt(9.8*(6400000+height_meter)) / 1000;
+    rotation_period = 2*3.1416*sqrt(pow(6400000+height_meter, 3)/(9.8*6400000*6400000))/3600;
 
-    t = 2*3.1416*sqrt(pow(6400000+height, 3)/(9.8*6400000*6400000))/3600;
-    printf("\nRotation period  : %lf Hours\n", t);
+    printf("\n\n [*] - Height from earth's surface : %lf km \n", height);
+    printf("\n [*] - Velocity                    : %lf km/s \n", velocity);
+    printf("\n [*] - Rotation period             : %lf Hours \n", rotation_period);
 
+}
+
+
+int main()
+{
+    printf("\n\t***  Satellite Velocity Calculator  ***\n");
+    go();
     getch();
 	return 0;
 }
